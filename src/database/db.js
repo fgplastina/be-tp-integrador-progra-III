@@ -4,11 +4,11 @@ import environments from '../config/environments.js';
 const { database } = environments;
 
 const connection = mysql.createPool({
-  host: environments.database.host,
-  user: environments.database.user,
-  port: environments.database.port,
-  password: environments.database.password,
-  database: environments.database.name,
+  host: database.host,
+  user: database.user,
+  port: database.port,
+  password: database.password,
+  database: database.name,
 });
 
 export default connection;
