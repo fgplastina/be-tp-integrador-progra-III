@@ -1,0 +1,22 @@
+<%- include('../partials/header', { title: category?.id ? 'Editar Categoría' : 'Crear Categoría', showNav: true }) %>
+
+<main>
+  <h1><%= category?.id ? 'Editar Categoría' : 'Crear Categoría' %></h1>
+
+  <form action="<%= formAction %>" method="POST">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" value="<%= category?.name || '' %>" required>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" rows="4" cols="50" required><%= category?.description || '' %></textarea>
+
+    <!-- TODO: falta arreglar el botón e actualizar, queda medio descolocado -->
+    <div style="margin-top: 1rem;">
+      <button type="submit" ><%= category?.id ? 'Actualizar' : 'Crear' %></button>
+      <a href="/backoffice/categories" class="button button-secondary">Cancelar</a>
+    </div>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
+

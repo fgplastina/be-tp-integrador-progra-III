@@ -1,0 +1,34 @@
+<%- include('../partials/header', { title: product?.id ? 'Editar Producto' : 'Crear Producto', showNav: true }) %>
+
+<main>
+  <h1><%= product?.id ? 'Editar Producto' : 'Crear Producto' %></h1>
+
+  <form action="<%= formAction %>" method="POST">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" value="<%= product?.name || '' %>" required>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" rows="4" cols="50" required><%= product?.description || '' %></textarea>
+
+    <label for="price">Precio:</label>
+    <input type="number" step="0.01" id="price" name="price" value="<%= product?.price || '' %>" required>
+
+    <label for="category_id">Categoría:</label>
+    <select id="category_id" name="category_id" required>
+      <option value="">Seleccionar categoría</option>
+      <% categories.forEach(cat => { %>
+        <option value="<%= cat.id %>" <%= product?.category_id == cat.id ? 'selected' : '' %>>
+          <%= cat.name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="image_url">Imagen URL:</label>
+    <input type="text" id="image_url" name="image_url" value="<%= product?.image_url || '' %>" />
+
+    <button type="submit" class="button"><%= product?.id ? 'Actualizar' : 'Crear' %></button>
+    <a href="/backoffice/products" class="button button-secondary">Cancelar</a>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

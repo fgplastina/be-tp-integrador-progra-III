@@ -1,0 +1,25 @@
+<%- include('backoffice/partials/header', { title: 'Login', showNav: false}) %>
+
+<main>
+  <h1>Iniciar Sesión</h1>
+  <% if (error) { %><p style="color:red"><%= error %></p><% } %>
+  <form action="/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required value="<%= email || '' %>">
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Ingresar</button>
+    <button type="button" onclick="autocompletar()">Autocompletar</button>
+  </form>
+</main>
+
+<script>
+  function autocompletar() {
+    document.getElementById('email').value = 'admin@example.com';
+    document.getElementById('password').value = 'admin123';
+  }
+</script>
+
+<%- include('backoffice/partials/footer') %>
