@@ -12,6 +12,12 @@ export const getUserById = async (id) => {
   return rows[0];
 };
 
+// Obtener un usuario por email
+export const getUserByEmail = async (email) => {
+  const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+  return rows[0];
+};
+
 // Crear usuario
 export const createUser = async ({ name, email, password, role }) => {
   await pool.query('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)', [

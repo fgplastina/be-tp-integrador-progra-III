@@ -72,6 +72,12 @@ th {
   background-color: #f4f4f4;
 }
 
+header .backoffice-title {
+  color: #ecf0f1; /* un blanco grisáceo */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 a.button {
   background: #3498db;
   color: white;
