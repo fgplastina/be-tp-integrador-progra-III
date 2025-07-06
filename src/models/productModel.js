@@ -3,8 +3,10 @@ import db from '../database/db.js';
 // Obtener todos los productos activos
 export const getAllProducts = async () => {
   try {
-    const [rows] = await db.execute('SELECT * FROM products');
-    console.log('Products fetched:', rows);
+    const [rows] = await db.execute(
+      'SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id'
+    );
+    console.log('Productos obtenidos:', rows);
     return rows;
   } catch (error) {
     console.error('Error al obtener los productos:', error);
@@ -27,7 +29,7 @@ export const getProductById = async (id) => {
 export const createProduct = async (data) => {
   try {
     const { name, description, price, image_url, category_id } = data;
-    console.log('Data to create product:', data);
+    console.log('Data para crear producto:', data);
     const [result] = await db.execute(
       'INSERT INTO products (name, description, price, image_url, category_id) VALUES (?, ?, ?, ?, ?)',
       [name, description, price, image_url, category_id]
@@ -43,7 +45,7 @@ export const createProduct = async (data) => {
 export const updateProduct = async (id, data) => {
   try {
     const { name, description, price, image_url, category_id } = data;
-    console.log('Data to update product:', data);
+    console.log('Data para actualizar producto:', data);
     const [result] = await db.execute(
       'UPDATE products SET name = ?, description = ?, price = ?, image_url = ?, category_id = ? WHERE id = ?',
       [name, description, price, image_url, category_id, id]

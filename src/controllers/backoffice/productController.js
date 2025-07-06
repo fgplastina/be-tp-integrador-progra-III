@@ -4,7 +4,6 @@ import * as categoryModel from '../../models/categoryModel.js';
 // Listado
 export const listProducts = async (req, res) => {
   const products = await productModel.getAllProducts();
-  console.log('Aca', products);
   res.render('backoffice/products/list', { products });
 };
 
