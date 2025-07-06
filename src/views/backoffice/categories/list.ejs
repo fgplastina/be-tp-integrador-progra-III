@@ -1,0 +1,38 @@
+<%- include('../partials/header', { title: 'Listado de Categorías' }) %>
+
+<main>
+  <h1>Listado de Categorías</h1>
+  <a href="/backoffice/categories/create" class="button">Agregar categoría</a>
+  <br><br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (categories && categories.length > 0) { %>
+        <% categories.forEach(category => { %>
+          <tr>
+            <td><%= category.id %></td>
+            <td><%= category.name %></td>
+            <td>$<%= category.description %></td>
+            <td>
+              <a href="/backoffice/categories/<%= category.id %>/edit" class="button">Editar</a>
+              <a href="/backoffice/categories/<%= category.id %>/delete" class="button button-danger">Eliminar</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="6">No hay categorías cargados.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<section>
+  <h2>Resumen del sistema</h2>
+
+  <div class="card">
+    <h3>Bienvenido al backoffice</h3>
+    <p>Utilizá la barra de navegación para administrar los distintos módulos del sistema:</p>
+    <ul>
+      <li><strong>Productos</strong>: Alta, baja y modificación de productos.</li>
+      <li><strong>Categorías</strong>: Organización de tipos de productos.</li>
+      <li><strong>Ventas</strong>: Visualización y exportación de tickets vendidos.</li>
+      <li><strong>Usuarios</strong>: Gestión de administradores (opcional).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>¿Qué querés hacer ahora?</h4>
+    <div class="actions">
+      <a class="button" href="/backoffice/products">Administrar productos</a>
+      <a class="button" href="/backoffice/categories">Administrar categorías</a>
+      <a class="button" href="/backoffice/sales">Ver ventas</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
