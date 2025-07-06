@@ -7,15 +7,21 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/backoffice">Dashboard</a></li>
-        <li><a href="/backoffice/products">Productos</a></li>
-        <li><a href="/backoffice/categories">Categorías</a></li>
-        <li><a href="/backoffice/sales">Ventas</a></li>
-        <li><a href="/backoffice/users">Usuarios</a></li>
-      </ul>
-    </nav>
+    <% if (showNav === false) { %>
+        <div class="backoffice-title" style="margin-top: 1rem;">
+          <strong>Área de Backoffice</strong>
+        </div>
+      <% } else { %>
+        <nav>
+          <ul>
+            <li><a href="/backoffice">Dashboard</a></li>
+            <li><a href="/backoffice/products">Productos</a></li>
+            <li><a href="/backoffice/categories">Categorías</a></li>
+            <li><a href="/backoffice/sales">Ventas</a></li>
+            <li><a href="/backoffice/users">Usuarios</a></li>
+          </ul>
+        </nav>
+      <% } %>
   </header>
 
   <main>
