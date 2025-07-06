@@ -29,7 +29,7 @@ export const createProduct = async (req, res) => {
 export const renderEditForm = async (req, res) => {
   const product = await productModel.getProductById(req.params.id);
   if (!product) {
-    return res.status(404).send('Product not found');
+    return res.status(404).send('Producto no encontrado');
   }
   const categories = await categoryModel.getAllCategories();
   res.render('backoffice/products/form', {
