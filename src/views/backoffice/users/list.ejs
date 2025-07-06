@@ -1,0 +1,44 @@
+<%- include('../partials/header', { title: 'Listado de Usuarios' }) %>
+
+<main>
+  <h1>Listado de Usuarios</h1>
+  <a href="/backoffice/users/create" class="button">Agregar usuario</a>
+  <br><br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Creado el</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (users && users.length > 0) { %>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.password %></td>
+            <td>
+              <a href="/backoffice/users/<%= user.id %>/edit" class="button">Editar</a>
+              <a href="/backoffice/users/<%= user.id %>/delete" class="button button-danger">Eliminar</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="6">No hay usuarios cargados.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

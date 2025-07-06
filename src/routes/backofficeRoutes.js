@@ -19,14 +19,14 @@ import {
 
 // import { listSales, viewSaleDetail, deleteSale } from '../controllers/backoffice/saleController.js';
 //
-// import {
-//   listUsers,
-//   renderCreateUserForm,
-//   createUser,
-//   renderEditUserForm,
-//   updateUser,
-//   deleteUser,
-// } from '../controllers/backoffice/userController.js';
+import {
+  listUsers,
+  renderCreateUserForm,
+  createUser,
+  renderEditUserForm,
+  updateUser,
+  deleteUser,
+} from '../controllers/backoffice/userController.js';
 
 const router = express.Router();
 
@@ -57,11 +57,11 @@ router.get('/categories/:id/delete', deleteCategory);
 // router.get('/sales/:id/delete', deleteSale);
 
 // Rutas para la gestión de usuarios
-// router.get('/users', listUsers);
-// router.get('/users/create', renderCreateUserForm);
-// router.post('/users/create', createUser);
-// router.get('/users/:id/edit', renderEditUserForm);
-// router.post('/users/:id/edit', updateUser);
-// router.get('/users/:id/delete', deleteUser);
+router.get('/users', listUsers);
+router.get('/users/create', renderCreateUserForm);
+router.post('/users/create', createUser);
+router.get('/users/:id/edit', renderEditUserForm);
+router.post('/users/:id/edit', updateUser);
+router.get('/users/:id/delete', deleteUser);
 
 export default router;

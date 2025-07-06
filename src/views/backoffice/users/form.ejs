@@ -1,0 +1,33 @@
+<%- include('../partials/header', { title: user?.id ? 'Editar Usuario' : 'Crear Usuario' }) %>
+
+<main>
+  <h1><%= user?.id ? 'Editar Usuario' : 'Crear Usuario' %></h1>
+
+  <form action="<%= formAction %>" method="POST">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" value="<%= user?.name || '' %>" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="<%= user?.email || '' %>" required>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" placeholder="<%= user?.id ? 'Dejar en blanco para no cambiar' : '' %>">
+    
+    <% if (user?.password) { %>
+      <p style="font-size: 0.9em; color: #666;">Hash actual: <code><%= user.password %></code></p>
+    <% } %>
+
+    <label for="role">Rol:</label>
+    <select id="role" name="role" required>
+      <option value="customer" <%= user?.role === 'customer' ? 'selected' : '' %>>Cliente</option>
+      <option value="admin" <%= user?.role === 'admin' ? 'selected' : '' %>>Administrador</option>
+    </select>
+
+    <div style="margin-top: 1rem;">
+      <button type="submit" class="button"><%= user?.id ? 'Actualizar' : 'Crear' %></button>
+      <a href="/backoffice/users" class="button button-secondary">Cancelar</a>
+    </div>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
