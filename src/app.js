@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import productRoutes from './routes/productRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
 import backofficeRoutes from './routes/backofficeRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import { requireAdmin } from './middlewares/authMiddleware.js';
@@ -34,11 +35,16 @@ app.use(
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
- *  Rutas
+ *  Rutas de la API
  */
-app.use('/products', productRoutes); // API
-app.use('/', authRoutes); // Login / logout
-app.use('/backoffice', requireAdmin, backofficeRoutes); // Admin protegido
+app.use('/products', productRoutes);
+app.use('/categories', categoryRoutes);
+
+/*
+ *  Auth y backoffice
+ */
+app.use('/', authRoutes);
+app.use('/backoffice', requireAdmin, backofficeRoutes);
 
 /*
  *  Configuración del motor de vistas EJS
