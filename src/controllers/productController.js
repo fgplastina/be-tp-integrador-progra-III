@@ -1,5 +1,4 @@
 import * as productModel from '../models/productModel.js';
-//const productModel = require('../models/productModel');
 
 export const getAllProducts = async (req, res) => {
   try {
