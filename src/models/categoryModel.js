@@ -36,6 +36,6 @@ export const updateCategory = async (id, data) => {
 
 // Eliminar categoria
 export const deleteCategory = async (id) => {
-  const [result] = await db.execute('DELETE FROM category WHERE id = ?', [id]);
+  const [result] = await db.execute('DELETE FROM categories WHERE id = ?', [id]);
   return result;
 };
