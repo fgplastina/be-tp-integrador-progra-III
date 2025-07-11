@@ -4,6 +4,7 @@ import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import saleRoutes from './routes/saleRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import backofficeRoutes from './routes/backofficeRoutes.js';
@@ -39,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
-
+app.use('/sales', saleRoutes);
 
 /*
  *  Auth y backoffice
