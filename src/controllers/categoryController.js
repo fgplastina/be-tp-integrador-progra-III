@@ -5,7 +5,7 @@ export const getAllCategories = async (req, res) => {
     const categories = await categoryModel.getAllCategories();
     res.json(categories || []);
   } catch (err) {
-    res.status(500).json({ message: 'Error al buscar el categoría' });
+    res.status(500).json({ message: 'Error al buscar la categoría' });
   }
 };
 
@@ -15,6 +15,6 @@ export const getCategoryById = async (req, res) => {
     if (!category) return res.status(404).json({ message: 'No se encontro el categoría' });
     res.json(category);
   } catch (err) {
-    res.status(500).json({ message: 'Error al buscar el categoría' });
+    res.status(500).json({ message: 'Error al buscar la categoría' });
   }
 };

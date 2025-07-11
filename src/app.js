@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 
+
 /*
  *  Auth y backoffice
  */

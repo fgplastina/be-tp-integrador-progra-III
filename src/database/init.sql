@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS users;
 
 -- Tabla de categorías para tener más de un tipo de producto
 CREATE TABLE categories (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id TINYINT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   description TEXT
 );
