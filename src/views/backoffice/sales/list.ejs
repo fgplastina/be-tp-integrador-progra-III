@@ -1,0 +1,40 @@
+<%- include('../partials/header', { title: 'Ventas', showNav: true }) %>
+
+<main>
+  <h1>Listado de Ventas</h1>
+  <a href="/backoffice/sales/create" class="button">Agregar venta</a>
+  <br><br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (sales.length > 0) { %>
+        <% sales.forEach(sale => { %>
+          <tr>
+            <td><%= sale.id %></td>
+            <td><%= sale.item_count %></td>
+            <td>$<%= sale.total %></td>
+            <td><%= sale.created_at.toLocaleString() %></td>
+            <td>
+              <a href="/backoffice/sales/<%= sale.id %>" class="button">Ver</a>
+              <a href="/backoffice/sales/<%= sale.id %>/edit" class="button">Editar</a>
+              <a href="/backoffice/sales/<%= sale.id %>/delete" class="button button-danger">Eliminar</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr><td colspan="5">No hay ventas registradas.</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,64 @@
+<%- include('../partials/header', { title: sale ? 'Editar Venta' : 'Crear Venta', showNav: true }) %>
+
+<main>
+  <form action="<%= formAction %>" method="POST">
+    <h1><%= sale ? 'Editar' : 'Nueva' %> Venta</h1>
+
+    <h2>Productos vendidos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio unitario</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="items-body">
+        <% items.forEach((item, i) => { 
+          const product = products.find(p => p.id === item.product_id);
+        %>
+          <tr>
+            <td>
+              <select name="items[<%= i %>][product_id]" class="product-select">
+                <% products.forEach(prod => { %>
+                  <option value="<%= prod.id %>" data-price="<%= prod.price %>" <%= prod.id === item.product_id ? 'selected' : '' %>>
+                    <%= prod.name %>
+                  </option>
+                <% }) %>
+              </select>
+            </td>
+            <td><input type="number" name="items[<%= i %>][quantity]" value="<%= item.quantity %>" min="1" class="quantity-input" required></td>
+            <td>
+              <input
+                type="text"
+                name="items[<%= i %>][unit_price]"
+                value="<%= item.unit_price %>"
+                readonly
+                class="unit-price"
+                style="border: none; background: transparent; pointer-events: none; color: inherit;"
+              >
+            </td>
+            <td><span class="subtotal"><%= (item.quantity * item.unit_price).toFixed(2) %></span></td>
+            <td><button type="button" class="remove-row">🗑</button></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <button type="button" id="add-item">Agregar producto</button>
+
+    <p><strong>Total:</strong> $<span id="total-amount">0.00</span></p>
+
+    <button type="submit" class="button"><%= sale ? 'Actualizar' : 'Crear' %></button>
+    <a href="/backoffice/sales" class="button button-secondary">Cancelar</a>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
+
+<script>
+  const products = <%- JSON.stringify(products) %>;
+</script>
+<script src="/js/sales-form.js"></script>

@@ -17,8 +17,16 @@ import {
   deleteCategory,
 } from '../controllers/backoffice/categoryController.js';
 
-// import { listSales, viewSaleDetail, deleteSale } from '../controllers/backoffice/saleController.js';
-//
+import {
+  listSales,
+  createSale,
+  viewSaleDetail,
+  renderEditSaleForm,
+  renderCreateSaleForm,
+  updateSale,
+  deleteSale,
+} from '../controllers/backoffice/saleController.js';
+
 import {
   listUsers,
   renderCreateUserForm,
@@ -52,9 +60,13 @@ router.post('/categories/:id/edit', updateCategory);
 router.get('/categories/:id/delete', deleteCategory);
 
 // Rutas para la gestión de ventas
-// router.get('/sales', listSales);
-// router.get('/sales/:id', viewSaleDetail);
-// router.get('/sales/:id/delete', deleteSale);
+router.get('/sales', listSales);
+router.get('/sales/create', renderCreateSaleForm);
+router.post('/sales/create', createSale);
+router.get('/sales/:id', viewSaleDetail);
+router.get('/sales/:id/delete', deleteSale);
+router.get('/sales/:id/edit', renderEditSaleForm);
+router.post('/sales/:id/edit', updateSale);
 
 // Rutas para la gestión de usuarios
 router.get('/users', listUsers);

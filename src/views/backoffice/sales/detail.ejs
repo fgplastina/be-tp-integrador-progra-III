@@ -1,0 +1,33 @@
+<%- include('../partials/header', { title: 'Detalle de Venta', showNav: true }) %>
+
+<main>
+  <h1>Detalle de la Venta #<%= sale.id %></h1>
+  <p><strong>Total:</strong> $<%= sale.total %></p>
+  <p><strong>Fecha:</strong> <%= sale.created_at.toLocaleString() %></p>
+
+  <h2>Productos vendidos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+        <tr>
+          <td><%= item.product_name %></td>
+          <td><%= item.quantity %></td>
+          <td>$<%= item.unit_price %></td>
+          <td>$<%= (item.quantity * item.unit_price).toFixed(2) %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <a href="/backoffice/sales" class="button">Volver al listado</a>
+</main>
+
+<%- include('../partials/footer') %>
